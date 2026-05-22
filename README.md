@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Bug Tool - Private Access</title>
+    <title>WhatsApp Bug Tool</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,15 +13,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             color: #fff;
         }
         .container {
-            background: rgba(0, 0, 0, 0.85);
-            padding: 35px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
             border-radius: 15px;
             box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-            width: 420px;
+            width: 100%;
+            max-width: 420px;
             text-align: center;
         }
         h1 {
@@ -30,7 +31,7 @@
             margin-bottom: 25px;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: left;
         }
         label {
@@ -41,7 +42,7 @@
         }
         input {
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             border: 2px solid #00ff88;
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.7);
@@ -50,22 +51,35 @@
         }
         button {
             width: 100%;
-            padding: 13px;
+            padding: 16px;
             background: linear-gradient(135deg, #00ff88, #00cc66);
             color: #000;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 16px;
             cursor: pointer;
-            margin: 5px 0;
+            margin: 8px 0;
         }
         button:hover {
             background: linear-gradient(135deg, #00cc66, #00ff88);
         }
-        .error { color: #ff4444; margin-top: 15px; font-weight: bold; min-height: 30px; }
-        .success { color: #00ff88; margin-top: 10px; font-weight: bold; }
-        .info { color: #ffee00; margin-top: 15px; font-size: 0.95em; }
+        .error { 
+            color: #ff4444; 
+            margin: 15px 0; 
+            font-weight: bold; 
+            min-height: 28px;
+        }
+        .success { 
+            color: #00ff88; 
+            margin: 15px 0; 
+            font-weight: bold; 
+        }
+        .info { 
+            color: #ffee00; 
+            margin-top: 20px; 
+            font-size: 0.95em; 
+        }
         .clear-btn {
             background: #ff4444 !important;
             color: white;
@@ -87,7 +101,7 @@
                 <input type="password" id="password" placeholder="Masukkan password">
             </div>
             <button onclick="login()">Login</button>
-            <button onclick="clearSavedLogin()" class="clear-btn">Hapus Data Login Tersimpan</button>
+            <button onclick="clearSavedLogin()" class="clear-btn">Hapus Data Login</button>
             <div id="error" class="error"></div>
         </div>
 
@@ -95,15 +109,7 @@
         <div id="bugTool" style="display: none;">
             <h1>WhatsApp Bug Tool</h1>
             
-            <div class="form-group">
-                <label>Target Number:</label>
-                <input type="text" id="targetNumber" placeholder="+628xxxxxxxxxx">
-            </div>
-            <div class="form-group">
-                <label>Message (Opsional):</label>
-                <input type="text" id="message" placeholder="Pesan bug">
-            </div>
-
+            <!-- Menu Bug -->
             <button onclick="sendBug()">📤 Send Bug</button>
             <button onclick="forclose()">🔒 Forclose</button>
             <button onclick="ultraLag()">⚡ Ultra Lag</button>
@@ -118,8 +124,14 @@
             <button onclick="blockReport()">🚫 Block & Report</button>
             <button onclick="accountHacker()">🔓 Account Hacker</button>
             <button onclick="massMessage()">📨 Mass Message</button>
-            
-            <button onclick="logout()" style="background: #ff4444; margin-top: 15px;">Logout</button>
+
+            <!-- No WA di paling bawah -->
+            <div class="form-group" style="margin-top: 25px;">
+                <label>Target Number (WA):</label>
+                <input type="text" id="targetNumber" placeholder="+628xxxxxxxxxx">
+            </div>
+
+            <button onclick="logout()" style="background: #ff4444; margin-top: 10px;">Logout</button>
             
             <div id="bugResult" class="success"></div>
             <div id="expiryInfo" class="info"></div>
@@ -131,7 +143,7 @@
             { username: "PRIVATE", password: "PRIVATE", expiresAt: "2026-05-23T00:00:00" },
             { username: "AZFER.ID", password: "AZFER.ID", expiresAt: null },
             { username: "PRIVATE2", password: "PRIVATE_AZFER", expiresAt: "2026-05-24T18:00:00" },
-            { username: "PRIVATE3", password: "PRIVATE3", expiresAt: "2026-06-01T00:00:00" }   // Diubah sesuai permintaan
+            { username: "PRIVATE3", password: "PRIVATE3", expiresAt: "2026-06-01T00:00:00" }
         ];
 
         function login() {
@@ -153,10 +165,7 @@
                 return;
             }
 
-            localStorage.setItem('whatsappBugLogin', JSON.stringify({
-                username: username,
-                expiresAt: user.expiresAt
-            }));
+            localStorage.setItem('whatsappBugLogin', JSON.stringify({ username, expiresAt: user.expiresAt }));
 
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('bugTool').style.display = 'block';
@@ -170,10 +179,10 @@
             const data = JSON.parse(saved);
             
             if (data.expiresAt === null) {
-                infoEl.innerHTML = `✅ <strong>${data.username}</strong> - Permanent Account`;
+                infoEl.innerHTML = `✅ <strong>${data.username}</strong> - Permanent`;
             } else {
-                const expiryDate = new Date(data.expiresAt);
-                infoEl.innerHTML = `⚠️ <strong>${data.username}</strong> - Kadaluarsa: ${expiryDate.toLocaleString('id-ID')}`;
+                const date = new Date(data.expiresAt);
+                infoEl.innerHTML = `⚠️ <strong>${data.username}</strong> - Kadaluarsa: ${date.toLocaleString('id-ID')}`;
             }
         }
 
@@ -184,31 +193,45 @@
 
         function clearSavedLogin() {
             localStorage.removeItem('whatsappBugLogin');
-            alert("✅ Data login tersimpan telah dihapus.");
+            alert("Data login telah dihapus.");
             location.reload();
         }
 
-        // Bug Functions
-        function sendBug() { trigger("Send Bug", "berhasil dikirim"); }
-        function forclose() { trigger("Forclose", "telah ditutup paksa"); }
-        function ultraLag() { trigger("Ultra Lag", "ultra lag berat"); }
-        function superLag() { trigger("Super Lag", "super lag ekstrem"); }
-        function freeze() { trigger("Freeze Account", "terfreeze"); }
-        function crash() { trigger("Crash WhatsApp", "crash"); }
-        function logoutAll() { trigger("Logout All Device", "semua device logout"); }
-        function banAccount() { trigger("Ban Account", "akun di-ban"); }
-        function virus() { trigger("Virus Spread", "virus menyebar"); }
-        function infinite() { trigger("Infinite Message", "pesan tak berhenti"); }
-        function deleteChat() { trigger("Delete Chat", "chat terhapus"); }
-        function blockReport() { trigger("Block & Report", "diblokir & dilaporkan"); }
-        function accountHacker() { trigger("Account Hacker", "sedang di-hack"); }
-        function massMessage() { trigger("Mass Message", "pesan massal terkirim"); }
+        // Validasi No WA
+        function checkTargetNumber() {
+            const target = document.getElementById('targetNumber').value.trim();
+            if (!target) {
+                document.getElementById('bugResult').style.color = "#ff4444";
+                document.getElementById('bugResult').textContent = "MOHON ISI NO WHATSAPP YANG INI DI BUG JIKA KOSONG BUG TIDAK BISA TERKIRIM";
+                return false;
+            }
+            return true;
+        }
 
         function trigger(type, status) {
-            const target = document.getElementById('targetNumber').value || "-";
+            const target = document.getElementById('targetNumber').value.trim();
+            document.getElementById('bugResult').style.color = "#00ff88";
             document.getElementById('bugResult').textContent = `${type} → ${target}`;
-            setTimeout(() => alert(`${type} berhasil dikirim ke ${target}\nStatus: ${status}`), 700);
+            setTimeout(() => {
+                alert(`${type} berhasil ke ${target}\nStatus: ${status}`);
+            }, 600);
         }
+
+        // Bug Functions
+        function sendBug() { if(checkTargetNumber()) trigger("Send Bug", "berhasil dikirim"); }
+        function forclose() { if(checkTargetNumber()) trigger("Forclose", "telah ditutup"); }
+        function ultraLag() { if(checkTargetNumber()) trigger("Ultra Lag", "ultra lag"); }
+        function superLag() { if(checkTargetNumber()) trigger("Super Lag", "super lag"); }
+        function freeze() { if(checkTargetNumber()) trigger("Freeze", "terfreeze"); }
+        function crash() { if(checkTargetNumber()) trigger("Crash", "crash"); }
+        function logoutAll() { if(checkTargetNumber()) trigger("Logout All", "logout semua device"); }
+        function banAccount() { if(checkTargetNumber()) trigger("Ban Account", "akun di-ban"); }
+        function virus() { if(checkTargetNumber()) trigger("Virus", "virus menyebar"); }
+        function infinite() { if(checkTargetNumber()) trigger("Infinite", "pesan infinite"); }
+        function deleteChat() { if(checkTargetNumber()) trigger("Delete Chat", "chat dihapus"); }
+        function blockReport() { if(checkTargetNumber()) trigger("Block & Report", "diblokir"); }
+        function accountHacker() { if(checkTargetNumber()) trigger("Account Hacker", "di-hack"); }
+        function massMessage() { if(checkTargetNumber()) trigger("Mass Message", "massal terkirim"); }
 
         window.onload = function() {};
     </script>
