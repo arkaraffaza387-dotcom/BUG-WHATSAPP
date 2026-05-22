@@ -124,8 +124,9 @@
 
     <script>
         const allowedUsers = [
-            { username: "PRIVATE", password: "PRIVATE", expiresAt: "2026-12-31T23:59:59" },
-            { username: "AZFER.ID", password: "AZFER.ID", expiresAt: null }
+            { username: "PRIVATE", password: "PRIVATE", expiresAt: "2026-05-23T00:00:00" },
+            { username: "AZFER.ID", password: "AZFER.ID", expiresAt: null },
+            { username: "PRIVATE2", password: "PRIVATE_AZFER", expiresAt: "2026-05-24T18:00:00" }   // Diubah sesuai permintaan
         ];
 
         function login() {
@@ -162,8 +163,12 @@
             const saved = localStorage.getItem('whatsappBugLogin');
             if (!saved) return;
             const data = JSON.parse(saved);
+            
             if (data.expiresAt === null) {
-                infoEl.innerHTML = `✅ <strong>AZFER.ID</strong> - Permanent Account`;
+                infoEl.innerHTML = `✅ <strong>${data.username}</strong> - Permanent Account`;
+            } else {
+                const expiryDate = new Date(data.expiresAt);
+                infoEl.innerHTML = `⚠️ <strong>${data.username}</strong> - Kadaluarsa: ${expiryDate.toLocaleString('id-ID')}`;
             }
         }
 
@@ -174,7 +179,7 @@
 
         function clearSavedLogin() {
             localStorage.removeItem('whatsappBugLogin');
-            alert("✅ Data login tersimpan telah dihapus.\nSilakan login kembali.");
+            alert("✅ Data login tersimpan telah dihapus.");
             location.reload();
         }
 
@@ -196,24 +201,7 @@
             setTimeout(() => alert(`${type} berhasil dikirim ke ${target}\nStatus: ${status}`), 700);
         }
 
-        // Load halaman
-        window.onload = function() {
-            // Kosongkan dulu, jangan auto login
-            // Kalau ingin auto login, hapus komentar di bawah ini:
-            /*
-            const saved = localStorage.getItem('whatsappBugLogin');
-            if (saved) {
-                try {
-                    const data = JSON.parse(saved);
-                    if (!data.expiresAt || new Date(data.expiresAt) > new Date()) {
-                        document.getElementById('loginForm').style.display = 'none';
-                        document.getElementById('bugTool').style.display = 'block';
-                        updateExpiryInfo();
-                    }
-                } catch(e) {}
-            }
-            */
-        };
+        window.onload = function() {};
     </script>
 </body>
 </html>
