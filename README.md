@@ -156,12 +156,14 @@
     </div>
 
     <script>
-        // DATABASE USER (Password PRIVATE2 sudah diubah menjadi PRIVATE2)
+        // DATABASE USER
         const allowedUsers = [
             { username: "PRIVATE", password: "PRIVATE", premium: false },
             { username: "AZFER.ID", password: "AZFER.ID", premium: true, premiumExpiresAt: null },   // Unlimited
             { username: "PRIVATE2", password: "PRIVATE2", premium: true, premiumExpiresAt: "2026-05-25T03:00:00" }, 
-            { username: "PRIVATE3", password: "PRIVATE3", premium: false }
+            { username: "PRIVATE3", password: "PRIVATE3", premium: false },
+            // Akun Baru PRIVATE4
+            { username: "PRIVATE4", password: "PRIVATE4", premium: true, premiumExpiresAt: "2026-05-29T00:00:00" }
         ];
 
         let currentUser = null;
