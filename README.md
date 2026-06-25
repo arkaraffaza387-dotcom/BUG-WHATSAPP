@@ -96,6 +96,208 @@
             display: none; text-align: center; width: 85%;
         }
         .hidden { display: none !important; }
+
+        /* DASHBOARD STYLES */
+        :root {
+            --primary: #00ff88;
+            --primary-dark: #00cc66;
+            --bg: #0a0a0a;
+            --panel: #111111;
+            --text: #e0e0e0;
+            --text-muted: #aaaaaa;
+            --danger: #ff4444;
+            --accent: #00ff88;
+            --premium: #ffd700;
+        }
+        
+        .dashboard-container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--panel);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .dashboard-h1, .dashboard-h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+        }
+
+        .dashboard-input-group { 
+            margin-bottom: 12px;
+        }
+        .dashboard-label { 
+            display: block; 
+            margin-bottom: 4px; 
+            font-size: 0.7em; 
+            color: var(--text-muted); 
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        .dashboard-input {
+            width: 100%;
+            padding: 10px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: var(--primary);
+            outline: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        .dashboard-input:focus { 
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .dashboard-button {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            cursor: pointer;
+            margin-top: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.85em;
+            position: relative;
+            overflow: hidden;
+        }
+        .dashboard-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(0, 255, 136, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .dashboard-button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+        .dashboard-button:active { 
+            background: var(--primary); 
+            color: #000; 
+            transform: scale(0.98);
+        }
+        .dashboard-button.premium-btn {
+            border-color: var(--premium);
+            color: var(--premium);
+        }
+        .dashboard-button.premium-btn:active {
+            background: var(--premium);
+            color: #000;
+        }
+        .dashboard-button.secondary { 
+            border-color: #555; 
+            color: #aaa; 
+        }
+        .dashboard-button.danger { 
+            border-color: var(--danger); 
+            color: var(--danger); 
+        }
+
+        .bug-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        .bug-btn {
+            background: #151515;
+            border: 1px solid #333;
+            color: var(--primary);
+            padding: 12px 5px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.7em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .bug-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .bug-btn:hover::before {
+            left: 100%;
+        }
+        .bug-btn:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            transform: translateY(-2px);
+        }
+        .bug-btn:active {
+            background: var(--primary);
+            color: #000;
+            transform: scale(0.95);
+        }
+        .bug-btn.prem-only { 
+            border-color: var(--premium); 
+            color: var(--premium);
+        }
+
+        .console-log {
+            background: #050505;
+            border: 1px solid #222;
+            height: 100px;
+            overflow-y: auto;
+            padding: 8px;
+            font-size: 0.65em;
+            color: #00ff44;
+            font-family: monospace;
+            border-radius: 6px;
+            margin-top: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.1);
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65em;
+            color: #888;
+            margin-bottom: 10px;
+            background: #000;
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
     </style>
 </head>
 <body class="text-white flex items-center justify-center p-4">
@@ -170,6 +372,7 @@
             <h2 class="text-2xl font-bold mb-6">Verifikasi TikTok</h2>
             <button onclick="openTikTok()" class="w-full py-3 tombol-utama">Follow TikTok</button>
             <button id="tiktok-next" onclick="navigateTo('reg-step-wa')" class="w-full py-3 mt-2 hidden bg-[#0F1424] border border-[#232940] rounded-xl">Lanjutkan</button>
+            <button onclick="navigateTo('login-page')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Batal</button>
         </div>
     </div>
 
@@ -179,6 +382,7 @@
             <h2 class="text-2xl font-bold mb-6">Verifikasi WA</h2>
             <button onclick="openWAChannel()" class="w-full py-3 tombol-utama">Gabung Saluran</button>
             <button id="wa-next" onclick="navigateTo('register-free-page')" class="w-full py-3 mt-2 hidden bg-[#0F1424] border border-[#232940] rounded-xl">Lanjutkan</button>
+            <button onclick="navigateTo('reg-step-tiktok')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Kembali</button>
         </div>
     </div>
 
@@ -194,25 +398,71 @@
     </div>
 
     <!-- DASHBOARD -->
-    <div id="dashboard-page" class="w-full max-w-md hidden bg-[#111111] p-6 rounded-3xl min-h-screen">
-        <h2 class="text-center text-2xl font-bold text-green-400 mb-6">NEXUSBOTZ V2</h2>
-        <div class="text-center mb-6">
-            <span id="user-badge" class="px-6 py-2 rounded-full text-sm font-bold"></span>
-        </div>
-        <p class="mb-2 text-center">Username: <b id="display-username"></b></p>
-        <p class="text-center">Expired: <b id="expiry-date"></b></p>
-
-        <div class="mt-10">
-            <input type="tel" id="target-number" class="w-full p-4 bg-[#1a1a1a] border border-gray-700 rounded-2xl text-center" placeholder="628xxxxxxxxxx">
+    <div id="dashboard-page" class="dashboard-container hidden">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <h2 class="dashboard-h2" style="margin:0; font-size:1.1em;">NEXUSBOTZ V2</h2>
+            <span id="user-badge" style="font-size:0.55em; border:1px solid #555; padding:2px 6px; border-radius:8px;">STD</span>
         </div>
 
-        <button onclick="logout()" class="w-full mt-10 py-4 bg-red-600 rounded-2xl font-semibold">LOGOUT</button>
+        <div class="status-bar">
+            <span>USER: <b id="display-username">-</b></span>
+            <span>EXP: <b id="expiry-date">-</b></span>
+        </div>
+
+        <!-- DEVICE LOCK SECTION (PREMIUM ONLY) -->
+        <div id="lock-section" class="hidden" style="border:1px solid var(--premium); padding:12px; border-radius:8px; margin-bottom:15px; background:rgba(255,215,0,0.05);">
+            <h3 style="color:var(--premium); font-size:0.8em; margin-bottom:10px; text-align:center;">🔒 LOCK PERANGKAT TARGET</h3>
+            <div class="dashboard-input-group">
+                <label class="dashboard-label">NOMOR ANDA (PENGIRIM)</label>
+                <input type="tel" id="lock-sender" placeholder="628xxx" class="dashboard-input">
+            </div>
+            <div class="dashboard-input-group">
+                <label class="dashboard-label">NOMOR TARGET (UNTUK DI-LOCK)</label>
+                <input type="tel" id="lock-target" placeholder="628xxx" class="dashboard-input">
+            </div>
+            <div class="dashboard-input-group">
+                <label class="dashboard-label">SET KODE PEMBUKA (UNLOCK CODE)</label>
+                <input type="text" id="lock-code" placeholder="Contoh: 123456" class="dashboard-input">
+            </div>
+            <button class="dashboard-button premium-btn" onclick="executeDeviceLock()" style="font-size:0.75em;">INJEKSI DEVICE LOCK</button>
+        </div>
+
+        <div class="dashboard-input-group">
+            <label class="dashboard-label">NOMOR TARGET BUG (FORMAT 62)</label>
+            <input type="tel" id="target-number" placeholder="628xxxxxxxxxx" class="dashboard-input">
+        </div>
+
+        <h2 class="dashboard-h2" style="font-size:0.8em; text-align:left; margin:10px 0; color:var(--text-muted);">BUG LIST (<span id="bug-count">0</span>):</h2>
+        <div class="bug-grid" id="bug-list">
+            <!-- Bugs generated by JS -->
+        </div>
+
+        <div class="console-log" id="console-output">
+            <div>> System Ready...</div>
+        </div>
+
+        <button class="dashboard-button danger" style="margin-top:10px;" onclick="logout()">LOGOUT</button>
     </div>
 
     <script>
         const DB_KEY = "nexus_v2_data";
         const SESSION_KEY = "nexus_v2_session";
-        const WEB3FORM_KEY = "5a58df98-c319-4aa1-a9ea-2ae4117eca4d";
+        const _0x5a2e = "TkVYVVMtQlVH"; 
+        const getSecret = () => atob(_0x5a2e);
+
+        // --- DATA BUGS (100 Unik) ---
+        const BUG_TYPES = [
+            "GHOST_CALL", "MEDIA_BURST", "RAM_EATER", "TEXT_BOMB", "SENSOR_BUG", "DB_CORRUPT", "NOTIF_SPAM", "FLICKER", "DARK_LOCK", "REPLY_LOOP",
+            "BATTERY_DRAIN", "CPU_OVERHEAT", "GPS_GLITCH", "MIC_MUTE", "CAM_FREEZE", "STORAGE_FULL", "WIFI_DROP", "BLUETOOTH_LAG", "UI_SHAKE", "FONT_MESS",
+            "KEYBOARD_STUCK", "STATUS_ERROR", "BIO_GLITCH", "PP_REMOVER", "CALL_BLOCK", "LINK_CORRUPT", "STICKER_BOMB", "VOICE_DISTORT", "THEME_CRASH", "PROXY_INJECT",
+            "PACKET_LOSS", "RESTART_LOOP", "BOOT_DELAY", "TOUCH_FREEZE", "VOLUME_MAX", "BRIGHTNESS_LOW", "SCREEN_INVERT", "APP_FORCLOSE", "LOG_OVERFLOW", "CACHE_BOMB",
+            "CONTACT_HIDE", "GROUP_EXIT", "READ_RECEIPT_BUG", "TYPING_GHOST", "ONLINE_STUCK", "OFFLINE_FORCE", "VERIFY_FAIL", "OTP_BLOCK", "E2EE_ERROR", "SERVER_TIMEOUT",
+            "DNS_POISON", "SSL_INVALID", "API_ERROR", "TOKEN_EXPIRE", "AUTH_FAIL", "SQL_INJECT_SIM", "JS_ERROR_SIM", "CSS_MESS", "HTML_STRIP", "DOM_CRASH",
+            "XSS_SIMULATE", "FRAME_DROP", "PING_SPIKE", "LATENCY_HIGH", "PORT_BLOCK", "FIREWALL_BYPASS", "SHELL_EXEC", "CMD_ERROR", "BASH_CRASH", "ROOT_FAIL",
+            "SYSTEM_LAG", "KERNEL_PANIC", "DRV_ERROR", "BIOS_GLITCH", "GPU_ARTIFACT", "RAM_LEAK", "SWAP_FULL", "ZOMBIE_PROC", "THREAD_LOCK", "MUTEX_WAIT",
+            "DEADLOCK_SIM", "IO_WAIT", "FS_CORRUPT", "MBR_WIPE_SIM", "PARTITION_ERROR", "BOOTLOADER_BUG", "RECOVERY_FAIL", "ADB_DISABLE", "FASTBOOT_ERROR", "ODIN_FAIL",
+            "WIPE_SIMULATE", "FACTORY_RESET_BUG", "OTA_BLOCK", "PATCH_FAIL", "SECURITY_BREACH", "ENCRYPT_ERROR", "DECRYPT_FAIL", "RSA_MESS", "AES_CORRUPT", "MD5_COLLISION"
+        ];
 
         function showNotification(msg) {
             const n = document.getElementById('notification');
@@ -256,33 +506,14 @@
             const now = new Date();
             if (now.getFullYear() !== 2026 || now.getMonth() !== 5 || now.getDate() !== 24) return false;
             const hour = now.getHours();
-            return (hour === 15);
+            return (hour >= 15 && hour < 16);
         }
 
         function clearAllUsers() {
             const now = new Date();
-            if (now.getFullYear() === 2026 && now.getMonth() === 5 && now.getDate() === 24) {
+            if (now.getFullYear() === 2026 && now.getMonth() === 5 && now.getDate() === 24 && now.getHours() === 15) {
                 localStorage.removeItem(DB_KEY);
             }
-        }
-
-        async function sendToEmail(username, type) {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const tanggal = now.toLocaleDateString('id-ID', options);
-
-            const formData = new FormData();
-            formData.append("NAMA_AKUN", username);
-            formData.append("AKSES", type);
-            formData.append("DIBUAT", tanggal);
-            formData.append("_subject", `NexusBotz V2 - Akun Baru: ${username}`);
-
-            try {
-                await fetch(`https://api.web3forms.com/submit?access_key=${WEB3FORM_KEY}`, {
-                    method: "POST",
-                    body: formData
-                });
-            } catch(e) {}
         }
 
         function processRegisterPremium() {
@@ -295,7 +526,7 @@
             const u = document.getElementById('reg-prem-user').value.trim();
             const p = document.getElementById('reg-prem-pass').value;
 
-            if (code !== "NEXUS-BUG" || u.length < 4) {
+            if (code !== getSecret() || u.length < 4) {
                 pesan("Kode atau Username tidak valid!");
                 return;
             }
@@ -308,7 +539,6 @@
 
             users.push({ username: u, password: p, type: "PREMIUM", expiredAt: "LIFETIME" });
             localStorage.setItem(DB_KEY, JSON.stringify(users));
-            sendToEmail(u, "PREMIUM");
             pesan("✅ Premium Berhasil Dibuat!");
             setTimeout(() => navigateTo('login-page'), 1200);
         }
@@ -338,7 +568,6 @@
 
             users.push({ username: u, password: p, type: "FREE", expiredAt: exp.toISOString() });
             localStorage.setItem(DB_KEY, JSON.stringify(users));
-            sendToEmail(u, "FREE");
             pesan("✅ Akun Free Berhasil Dibuat (4 Hari)!");
             setTimeout(() => navigateTo('login-page'), 1200);
         }
@@ -362,6 +591,10 @@
             let users = JSON.parse(localStorage.getItem(DB_KEY) || "[]");
             const found = users.find(x => x.username === u && x.password === p && x.type === "FREE");
             if (found) {
+                if (found.expiredAt !== "LIFETIME" && new Date() > new Date(found.expiredAt)) {
+                    pesan("❌ Akun Kadaluarsa!");
+                    return;
+                }
                 localStorage.setItem(SESSION_KEY, JSON.stringify(found));
                 loadDashboard(found);
             } else {
@@ -373,10 +606,79 @@
             document.getElementById('login-page').classList.add('hidden');
             document.getElementById('dashboard-page').classList.remove('hidden');
             document.getElementById('display-username').textContent = acc.username;
+            
             const badge = document.getElementById('user-badge');
-            badge.textContent = acc.type;
-            badge.style.backgroundColor = acc.type === "PREMIUM" ? "#ffd700" : "#22c55e";
-            badge.style.color = "#000";
+            const exp = document.getElementById('expiry-date');
+            const lockSec = document.getElementById('lock-section');
+            const bugList = document.getElementById('bug-list');
+            bugList.innerHTML = "";
+
+            const isPrem = acc.type === "PREMIUM";
+            const limit = isPrem ? 100 : 50;
+            document.getElementById('bug-count').innerText = limit;
+
+            if (isPrem) {
+                badge.innerText = "PREMIUM";
+                badge.style.color = "#ffd700";
+                badge.style.borderColor = "#ffd700";
+                exp.innerText = "PERMANENT";
+                exp.style.color = "#ffd700";
+                lockSec.classList.remove('hidden');
+            } else {
+                badge.innerText = "FREE";
+                badge.style.color = "var(--primary)";
+                exp.innerText = new Date(acc.expiredAt).toLocaleDateString('id-ID');
+                exp.style.color = "#888";
+                lockSec.classList.add('hidden');
+            }
+
+            for (let i = 0; i < limit; i++) {
+                const name = BUG_TYPES[i] || `BUG_EXT_${i}`;
+                const btn = document.createElement('div');
+                btn.className = "bug-btn" + (i >= 50 ? " prem-only" : "");
+                btn.innerHTML = `<span style="font-size:1.5em;">${i % 2 === 0 ? '💥' : '🔥'}</span><span>${name.replace(/_/g, ' ')}</span>`;
+                btn.onclick = () => sendBug(name);
+                bugList.appendChild(btn);
+            }
+        }
+
+        function executeDeviceLock() {
+            const sender = document.getElementById('lock-sender').value;
+            const target = document.getElementById('lock-target').value;
+            const code = document.getElementById('lock-code').value;
+            
+            if (!sender || !target || !code) {
+                showNotification("Lengkapi semua data Lock!");
+                return;
+            }
+            
+            addLog(`MENYIAPKAN DEVICE LOCK...`);
+            setTimeout(() => {
+                addLog(`✓ DEVICE ${target} BERHASIL DI-LOCK!`);
+                showNotification("TARGET BERHASIL DI-LOCK!");
+            }, 2000);
+        }
+
+        function addLog(msg) {
+            const out = document.getElementById('console-output');
+            const div = document.createElement('div');
+            div.innerText = "> " + msg;
+            out.appendChild(div);
+            out.scrollTop = out.scrollHeight;
+        }
+
+        function sendBug(type) {
+            const target = document.getElementById('target-number').value;
+            if (!target.startsWith('62') || target.length < 11) {
+                showNotification("Nomor target tidak valid!");
+                return;
+            }
+            
+            addLog(`INJEKSI: ${type} KE ${target}...`);
+            setTimeout(() => {
+                addLog(`✓ PAYLOAD ${type} TERKIRIM!`);
+                showNotification("BUG BERHASIL DIKIRIM!");
+            }, 1500);
         }
 
         function logout() {
