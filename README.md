@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NEXUSBOTZ V2</title>
+    <title>GeneralBotzV3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <script>
@@ -98,7 +98,7 @@
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
             background: #111; border: 2px solid #00ff88; padding: 15px 25px;
             z-index: 10000; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            display: none; text-align: center; width: 85%;
+            display: none; text-align: center; width: 85%; color: white;
         }
 
         :root {
@@ -112,11 +112,21 @@
             box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
         }
         .dashboard-input {
-            width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333;
-            color: #00ff88; border-radius: 8px; outline: none;
+            width: 100%; 
+            padding: 14px; 
+            background: #1a1a1a; 
+            border: 1px solid #333;
+            color: #00ff88 !important;
+            border-radius: 8px; 
+            outline: none;
+            font-size: 16px;
+        }
+        .dashboard-input::placeholder {
+            color: #777 !important;
         }
         .dashboard-input:focus {
-            border-color: #00ff88; box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+            border-color: #00ff88; 
+            box-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
         }
         .bug-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
@@ -149,14 +159,20 @@
 
     <div id="notification" class="notification"></div>
 
-    <!-- LOGIN PAGE -->
+    <!-- HALAMAN LOGIN DIUBAH SESUAI GENERALBOTZV3 -->
     <div id="login-page" class="w-full max-w-md">
         <div class="kaca p-8 text-center">
             <div class="mb-6">
                 <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663746958640/oN9dk99xNWfi2iUtA8BFud/haru_yosuga_logo-ZYHqo9RPzgNRsJcDcnysiz.webp" 
                      alt="Logo" class="mx-auto w-28 h-28" style="animation: float 3s ease-in-out infinite;">
-                <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">NEXUSBOTZ V2</h1>
+                <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">GENERALBOTZV3</h1>
                 <p class="text-emas text-xl font-semibold mt-1">OFFICIAL BUG INJECTOR</p>
+            </div>
+
+            <div class="flex justify-end mb-4">
+                <button onclick="showLangModal()" class="text-sm px-5 py-2 bg-[#0F1424] border border-[#232940] rounded-2xl flex items-center gap-2">
+                    <span id="current-lang">ENGLISH</span> <i class="fa fa-globe"></i>
+                </button>
             </div>
 
             <div class="flex rounded-2xl overflow-hidden border border-[#232940] mb-8 bg-[#0a0a0f]">
@@ -166,28 +182,28 @@
 
             <div id="contentPremium" class="tab-content active">
                 <div class="mb-5">
-                    <label class="block text-sm mb-2 text-gray-300">Username</label>
-                    <input type="text" id="userPremium" class="dashboard-input" placeholder="Masukkan username">
+                    <label class="block text-sm mb-2 text-gray-300">USERNAME</label>
+                    <input type="text" id="userPremium" class="dashboard-input" placeholder="ENTER USERNAME">
                 </div>
                 <div class="mb-6">
-                    <label class="block text-sm mb-2 text-gray-300">Password</label>
+                    <label class="block text-sm mb-2 text-gray-300">PASSWORD</label>
                     <input type="password" id="passPremium" class="dashboard-input" placeholder="••••••••">
                 </div>
-                <button onclick="masukPremium()" class="tombol-utama w-full py-4 text-lg font-semibold">MASUK PREMIUM</button>
-                <button onclick="navigateTo('register-premium-page')" class="w-full py-4 mt-3 bg-[#0F1424] border border-[#232940] rounded-2xl">Daftar Premium</button>
+                <button onclick="masukPremium()" class="tombol-utama w-full py-4 text-lg font-semibold">LOGIN PREMIUM</button>
+                <button onclick="navigateTo('register-premium-page')" class="w-full py-4 mt-3 bg-[#0F1424] border border-[#232940] rounded-2xl">REGISTER PREMIUM</button>
             </div>
 
             <div id="contentBiasa" class="tab-content hidden">
                 <div class="mb-5">
-                    <label class="block text-sm mb-2 text-gray-300">Username</label>
-                    <input type="text" id="userBiasa" class="dashboard-input" placeholder="Masukkan username">
+                    <label class="block text-sm mb-2 text-gray-300">USERNAME</label>
+                    <input type="text" id="userBiasa" class="dashboard-input" placeholder="ENTER USERNAME">
                 </div>
                 <div class="mb-6">
-                    <label class="block text-sm mb-2 text-gray-300">Password</label>
+                    <label class="block text-sm mb-2 text-gray-300">PASSWORD</label>
                     <input type="password" id="passBiasa" class="dashboard-input" placeholder="••••••••">
                 </div>
-                <button onclick="masukBiasa()" class="tombol-utama w-full py-4 text-lg font-semibold">MASUK FREE</button>
-                <button onclick="navigateTo('reg-step-tiktok')" class="w-full py-4 mt-3 bg-[#0F1424] border border-[#232940] rounded-2xl">Daftar Akun Free</button>
+                <button onclick="masukBiasa()" class="tombol-utama w-full py-4 text-lg font-semibold">LOGIN FREE</button>
+                <button onclick="navigateTo('reg-step-tiktok')" class="w-full py-4 mt-3 bg-[#0F1424] border border-[#232940] rounded-2xl">REGISTER FREE ACCOUNT</button>
             </div>
 
             <p id="pesanSistem" class="text-sm mt-6 min-h-[1.5rem] text-red-400"></p>
@@ -197,51 +213,54 @@
     <!-- REGISTER PREMIUM -->
     <div id="register-premium-page" class="w-full max-w-md hidden">
         <div class="kaca p-8 text-center">
-            <h2 class="text-2xl font-bold text-emas mb-6">DAFTAR PREMIUM</h2>
-            <input type="password" id="reg-prem-code" class="dashboard-input mb-3" placeholder="Kode Verifikasi">
-            <input type="text" id="reg-prem-user" class="dashboard-input mb-3" placeholder="Username Baru">
-            <input type="password" id="reg-prem-pass" class="dashboard-input mb-6" placeholder="Password Baru">
-            <button onclick="processRegisterPremium()" class="tombol-utama w-full py-3">Aktivasi Premium</button>
-            <button onclick="navigateTo('login-page')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Kembali</button>
+            <h2 class="text-2xl font-bold text-emas mb-6">REGISTER PREMIUM</h2>
+            <input type="password" id="reg-prem-code" class="dashboard-input mb-3" placeholder="VERIFICATION CODE">
+            <input type="text" id="reg-prem-user" class="dashboard-input mb-3" placeholder="NEW USERNAME">
+            <input type="password" id="reg-prem-pass" class="dashboard-input mb-6" placeholder="NEW PASSWORD">
+            <button onclick="processRegisterPremium()" class="tombol-utama w-full py-3">ACTIVATE PREMIUM</button>
+            <button onclick="navigateTo('login-page')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">BACK</button>
         </div>
     </div>
 
     <!-- REG STEP TIKTOK -->
     <div id="reg-step-tiktok" class="w-full max-w-md hidden">
         <div class="kaca p-8 text-center">
-            <h2 class="text-2xl font-bold mb-6">Verifikasi TikTok</h2>
-            <button onclick="openTikTok()" class="tombol-utama w-full py-3">Follow TikTok</button>
-            <button id="tiktok-next" onclick="navigateTo('reg-step-wa')" class="hidden w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Lanjutkan</button>
-            <button onclick="navigateTo('login-page')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Batal</button>
+            <h2 class="text-2xl font-bold mb-6">TIKTOK VERIFICATION</h2>
+            <button onclick="openTikTok()" class="tombol-utama w-full py-3">FOLLOW TIKTOK</button>
+            <button id="tiktok-next" onclick="navigateTo('reg-step-wa')" class="hidden w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">CONTINUE</button>
+            <button onclick="navigateTo('login-page')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">CANCEL</button>
         </div>
     </div>
 
     <!-- REG STEP WA -->
     <div id="reg-step-wa" class="w-full max-w-md hidden">
         <div class="kaca p-8 text-center">
-            <h2 class="text-2xl font-bold mb-6">Verifikasi WhatsApp</h2>
-            <button onclick="openWAChannel()" class="tombol-utama w-full py-3">Gabung Saluran WA</button>
-            <button id="wa-next" onclick="navigateTo('register-free-page')" class="hidden w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Lanjutkan</button>
-            <button onclick="navigateTo('reg-step-tiktok')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Kembali</button>
+            <h2 class="text-2xl font-bold mb-6">WHATSAPP VERIFICATION</h2>
+            <button onclick="openWAChannel()" class="tombol-utama w-full py-3">JOIN WA CHANNEL</button>
+            <button id="wa-next" onclick="navigateTo('register-free-page')" class="hidden w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">CONTINUE</button>
+            <button onclick="navigateTo('reg-step-tiktok')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">BACK</button>
         </div>
     </div>
 
     <!-- REGISTER FREE -->
     <div id="register-free-page" class="w-full max-w-md hidden">
         <div class="kaca p-8 text-center">
-            <h2 class="text-2xl font-bold mb-6">Daftar Akun Free</h2>
-            <input type="text" id="reg-free-user" class="dashboard-input mb-3" placeholder="Username">
-            <input type="password" id="reg-free-pass" class="dashboard-input mb-6" placeholder="Password">
-            <button onclick="processRegisterFree()" class="tombol-utama w-full py-3">Buat Akun Free</button>
-            <button onclick="navigateTo('login-page')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">Kembali</button>
+            <h2 class="text-2xl font-bold mb-6">REGISTER FREE ACCOUNT</h2>
+            <input type="text" id="reg-free-user" class="dashboard-input mb-3" placeholder="USERNAME">
+            <input type="password" id="reg-free-pass" class="dashboard-input mb-6" placeholder="PASSWORD">
+            <button onclick="processRegisterFree()" class="tombol-utama w-full py-3">CREATE FREE ACCOUNT</button>
+            <button onclick="navigateTo('login-page')" class="w-full py-3 mt-2 bg-[#0F1424] border border-[#232940] rounded-xl">BACK</button>
         </div>
     </div>
 
-    <!-- DASHBOARD -->
+    <!-- DASHBOARD & DAFTAR BUG TETAP SEPERTI AWAL -->
     <div id="dashboard-page" class="dashboard-container hidden">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-            <h2 style="margin:0; font-size:1.2em; color:#00ff88;">NEXUSBOTZ V2</h2>
-            <span id="user-badge" style="font-size:0.6em; padding:4px 12px; border-radius:9999px; border:1px solid #555;">FREE</span>
+            <h2 style="margin:0; font-size:1.2em; color:#00ff88;">GENERALBOTZV3</h2>
+            <div class="flex gap-2">
+                <button onclick="showLangModal()" class="text-xs px-3 py-1 bg-[#0F1424] border border-[#232940] rounded-xl">🌐</button>
+                <span id="user-badge" style="font-size:0.6em; padding:4px 12px; border-radius:9999px; border:1px solid #555;">FREE</span>
+            </div>
         </div>
 
         <div class="status-bar">
@@ -251,11 +270,11 @@
 
         <div id="lock-section" class="hidden p-4 rounded-xl border border-yellow-400 bg-yellow-400/10 mb-6">
             <h3 class="text-yellow-400 text-center mb-3">🔒 DEVICE LOCK (PREMIUM)</h3>
-            <button onclick="executeDeviceLock()" class="dashboard-button premium-btn w-full">INJEKSI DEVICE LOCK</button>
+            <button onclick="executeDeviceLock()" class="tombol-utama w-full py-3">INJECT DEVICE LOCK</button>
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm mb-2 text-gray-400">NOMOR TARGET BUG (62...)</label>
+            <label class="block text-sm mb-2 text-gray-400">TARGET NUMBER (62...)</label>
             <input type="tel" id="target-number" class="dashboard-input" placeholder="628xxxxxxxxxx">
         </div>
 
@@ -263,32 +282,38 @@
         <div class="bug-grid" id="bug-list"></div>
 
         <div class="console-log" id="console-output">
-            <div>> System Ready... Selamat datang di NEXUSBOTZ V2</div>
+            <div>> SYSTEM READY... WELCOME TO GENERALBOTZV3</div>
         </div>
 
-        <button onclick="logout()" class="w-full py-4 mt-6 text-red-500 border border-red-500 rounded-2xl font-semibold">LOGOUT</button>
+        <div class="flex gap-3 mt-6">
+            <button onclick="logout()" class="flex-1 py-4 text-red-500 border border-red-500 rounded-2xl font-semibold">LOGOUT</button>
+            <button onclick="forceLogout()" class="flex-1 py-4 text-red-500 border border-red-500 rounded-2xl font-semibold">EXIT APPLICATION</button>
+        </div>
     </div>
 
-    <!-- VIDEO MODAL AFTER LOGIN (AUTO REPLAY) -->
+    <!-- VIDEO MODAL -->
     <div id="success-modal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[9999]">
         <div class="kaca p-6 max-w-md w-full text-center rounded-3xl">
-            <h2 class="text-2xl font-bold text-emas mb-4">🎉 LOGIN BERHASIL!</h2>
+            <h2 class="text-2xl font-bold text-emas mb-4">🎉 LOGIN SUCCESSFUL!</h2>
             <iframe id="login-video" width="100%" height="220" 
                     src="https://www.youtube.com/embed/CY5WLrSYPzo?autoplay=1&loop=1&playlist=CY5WLrSYPzo" 
                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             <button id="close-video-btn" onclick="closeSuccessModal()" 
-                    class="tombol-utama w-full py-4 mt-6 text-lg">TUTUP</button>
+                    class="tombol-utama w-full py-4 mt-6 text-lg">CLOSE</button>
         </div>
     </div>
 
     <script>
         const DB_KEY = "nexus_v2_data";
         const SESSION_KEY = "nexus_v2_session";
-        const SECRET_CODE = "ULTRAS-BUG";
+        // ✅ KODE AKSES PREMIUM DIUBAH SESUAI CONTOH BARU
+        const SECRET_CODE = "GENERABOTZ-V3-INFINITE-NEXUS";
 
         let dailySendCount = 0;
         let lastSendDate = null;
+        let currentLang = "EN";
 
+        // ✅ DAFTAR JENIS BUG TETAP SAMA SEPERTI KODE AWAL
         const BUG_TYPES = [
             "GHOST_CALL", "MEDIA_BURST", "RAM_EATER", "TEXT_BOMB", "SENSOR_BUG", "DB_CORRUPT", 
             "NOTIF_SPAM", "FLICKER", "DARK_LOCK", "REPLY_LOOP", "BATTERY_DRAIN", "CPU_OVERHEAT", 
@@ -298,13 +323,13 @@
 
         function showNotification(msg) {
             const n = document.getElementById('notification');
-            n.innerText = msg;
+            n.innerText = msg.toUpperCase();
             n.style.display = 'block';
             setTimeout(() => n.style.display = 'none', 4000);
         }
 
         function pesan(teks) {
-            document.getElementById('pesanSistem').innerHTML = teks;
+            document.getElementById('pesanSistem').innerHTML = teks.toUpperCase();
         }
 
         function navigateTo(id) {
@@ -322,23 +347,32 @@
             document.getElementById('contentBiasa').classList.toggle('active', n === 1);
         }
 
+        function showLangModal() { /* tempat jika nanti ditambah elemen modal bahasa */ }
+        function hideLangModal() {}
+        function selectLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem("preferred_lang", lang);
+            document.getElementById('current-lang').textContent = lang === 'EN' ? 'ENGLISH' : lang === 'ID' ? 'INDONESIA' : 'RUSSIA';
+            hideLangModal();
+        }
+
         function processRegisterPremium() {
             const code = document.getElementById('reg-prem-code').value.trim();
             const user = document.getElementById('reg-prem-user').value.trim();
             const pass = document.getElementById('reg-prem-pass').value;
 
             if (code !== SECRET_CODE) {
-                pesan("Kode salah!<br>Kode Premium: <b>ULTRAS-BUG</b>");
+                pesan("WRONG CODE!<br>CORRECT CODE: <b>GENERABOTZ-V3-INFINITE-NEXUS</b>");
                 return;
             }
-            if (user.length < 4) return pesan("Username minimal 4 karakter!");
+            if (user.length < 4) return pesan("USERNAME MINIMAL 4 CHARACTERS!");
 
             let users = JSON.parse(localStorage.getItem(DB_KEY) || "[]");
-            if (users.find(u => u.username === user)) return pesan("Username sudah digunakan!");
+            if (users.find(u => u.username === user)) return pesan("USERNAME ALREADY USED!");
 
             users.push({ username: user, password: pass, type: "PREMIUM", expiredAt: "LIFETIME" });
             localStorage.setItem(DB_KEY, JSON.stringify(users));
-            pesan("✅ Premium berhasil dibuat!");
+            pesan("✅ PREMIUM ACCOUNT CREATED SUCCESSFULLY!");
             setTimeout(() => navigateTo('login-page'), 1500);
         }
 
@@ -346,15 +380,15 @@
             const user = document.getElementById('reg-free-user').value.trim();
             const pass = document.getElementById('reg-free-pass').value;
 
-            if (user.length < 4) return pesan("Username minimal 4 karakter!");
+            if (user.length < 4) return pesan("USERNAME MINIMAL 4 CHARACTERS!");
 
             let users = JSON.parse(localStorage.getItem(DB_KEY) || "[]");
-            if (users.find(u => u.username === user)) return pesan("Username sudah digunakan!");
+            if (users.find(u => u.username === user)) return pesan("USERNAME ALREADY USED!");
 
             const exp = new Date(); exp.setDate(exp.getDate() + 4);
             users.push({ username: user, password: pass, type: "FREE", expiredAt: exp.toISOString() });
             localStorage.setItem(DB_KEY, JSON.stringify(users));
-            pesan("✅ Akun Free berhasil dibuat (4 hari)!");
+            pesan("✅ FREE ACCOUNT CREATED! VALID 4 DAYS");
             setTimeout(() => navigateTo('login-page'), 1500);
         }
 
@@ -367,7 +401,7 @@
                 localStorage.setItem(SESSION_KEY, JSON.stringify(found));
                 loadDashboard(found);
             } else {
-                pesan("Username atau password Premium salah!");
+                pesan("WRONG PREMIUM USERNAME OR PASSWORD!");
             }
         }
 
@@ -377,11 +411,11 @@
             let users = JSON.parse(localStorage.getItem(DB_KEY) || "[]");
             const found = users.find(x => x.username === user && x.password === pass && x.type === "FREE");
             if (found) {
-                if (new Date() > new Date(found.expiredAt)) return pesan("Akun Free sudah kadaluarsa!");
+                if (new Date() > new Date(found.expiredAt)) return pesan("FREE ACCOUNT EXPIRED!");
                 localStorage.setItem(SESSION_KEY, JSON.stringify(found));
                 loadDashboard(found);
             } else {
-                pesan("Username atau password Free salah!");
+                pesan("WRONG FREE USERNAME OR PASSWORD!");
             }
         }
 
@@ -393,7 +427,7 @@
                 lastSendDate = today;
             }
             if (dailySendCount >= 10) {
-                showNotification("Limit Free 10x/hari sudah tercapai!");
+                showNotification("FREE LIMIT: 10 TIMES PER DAY REACHED!");
                 return false;
             }
             return true;
@@ -402,16 +436,16 @@
         function sendBug(type) {
             const target = document.getElementById('target-number').value.trim();
             if (!target.startsWith('62') || target.length < 11) {
-                showNotification("Nomor target tidak valid!");
+                showNotification("INVALID TARGET NUMBER!");
                 return;
             }
             const session = JSON.parse(localStorage.getItem(SESSION_KEY) || "{}");
             if (!checkDailyLimit(session.type === "PREMIUM")) return;
 
-            addLog(`INJEKSI ${type} ke ${target}...`);
+            addLog(`INJECT ${type} TO ${target}...`);
             setTimeout(() => {
-                addLog(`✓ ${type} BERHASIL TERKIRIM!`);
-                showNotification("BUG BERHASIL DIKIRIM!");
+                addLog(`✓ ${type} SENT SUCCESSFULLY!`);
+                showNotification("BUG INJECTED SUCCESSFULLY!");
                 dailySendCount++;
             }, 1200);
         }
@@ -442,7 +476,7 @@
             badge.style.borderColor = isPrem ? "#ffd700" : "#00ff88";
             badge.style.color = isPrem ? "#ffd700" : "#00ff88";
 
-            document.getElementById('expiry-date').textContent = isPrem ? "LIFETIME" : new Date(acc.expiredAt).toLocaleDateString('id-ID');
+            document.getElementById('expiry-date').textContent = isPrem ? "LIFETIME" : new Date(acc.expiredAt).toLocaleDateString('en-US');
             document.getElementById('lock-section').classList.toggle('hidden', !isPrem);
 
             const bugList = document.getElementById('bug-list');
@@ -456,7 +490,6 @@
                 bugList.appendChild(btn);
             }
 
-            // Video otomatis replay
             document.getElementById('success-modal').classList.remove('hidden');
             const closeBtn = document.getElementById('close-video-btn');
             if (isPrem) {
@@ -468,22 +501,25 @@
         }
 
         function executeDeviceLock() {
-            showNotification("✅ Device Lock berhasil diinjeksi!");
+            showNotification("✅ DEVICE LOCK INJECTED SUCCESSFULLY!");
         }
 
-        function logout() {
-            localStorage.removeItem(SESSION_KEY);
-            location.reload();
+        function logout() { 
+            localStorage.removeItem(SESSION_KEY); 
+            location.reload(); 
         }
-
-        function openTikTok() {
-            window.open('https://www.tiktok.com/@kiboyaslinofake', '_blank');
-            setTimeout(() => document.getElementById('tiktok-next').classList.remove('hidden'), 1000);
+        function forceLogout() { 
+            localStorage.clear(); 
+            alert("APPLICATION CLOSED"); 
+            window.close(); 
         }
-
-        function openWAChannel() {
-            window.open('https://whatsapp.com/channel/0029VbDBArY9MF8uLpmviF1S', '_blank');
-            setTimeout(() => document.getElementById('wa-next').classList.remove('hidden'), 1000);
+        function openTikTok() { 
+            window.open('https://www.tiktok.com/@kiboyaslinofake', '_blank'); 
+            setTimeout(() => document.getElementById('tiktok-next').classList.remove('hidden'), 1000); 
+        }
+        function openWAChannel() { 
+            window.open('https://whatsapp.com/channel/0029VbDBArY9MF8uLpmviF1S', '_blank'); 
+            setTimeout(() => document.getElementById('wa-next').classList.remove('hidden'), 1000); 
         }
 
         window.onload = () => {
